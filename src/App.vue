@@ -1,32 +1,48 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
+    <div class="mdui-toolbar mdui-color-theme mdui-shadow-4">
+      <router-link class="mdui-typo-headline" to="/">{{
+        config.siteTitle
+      }}</router-link>
+      <div class="mdui-toolbar-spacer"></div>
+      <!-- <router-link to="/about" class="mdui-btn mdui-btn-icon"
+        ><i class="mdui-icon material-icons">info_outline</i></router-link
+      > -->
     </div>
-    <router-view/>
+    <router-view :config="config" />
   </div>
 </template>
 
-<style lang="scss">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
-
-#nav {
-  padding: 30px;
-
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-
-    &.router-link-exact-active {
-      color: #42b983;
+<script>
+import mdui from 'mdui'
+const $ = mdui.$
+export default {
+  data: () => ({
+    config: {
+      seasonsAPI: '/seasons.json',
+      seasons: null,
+      siteTitle: 'AnimePure',
+      isLandscape: null
     }
+  }),
+  computed: {
+  },
+  mounted () {
+    $.ajax({
+      url: this.config.seasonsAPI,
+      dataType: 'json',
+      timeout: 10000,
+      success: (json) => {
+        this.config.seasons = json
+      },
+      error: () => {
+        mdui.snackbar('番剧列表加载失败')
+      }
+    })
+    setInterval(() => {
+      const isLandscape = innerHeight < innerWidth
+      this.config.isLandscape = isLandscape
+    }, 500)
   }
 }
-</style>
+</script>

@@ -1,0 +1,15 @@
+{
+    "short_name": "AnimePure",
+    "name": "AnimePure",
+    "icons": [
+        {
+            "src": "./favicon.png",
+            "sizes": "512x512",
+            "type": "image/png"
+        }
+    ],
+    "start_url": "index.html",
+    "display": "standalone",
+    "background_color": "#ffffff",
+    "theme_color": "#673AB7"
+}
