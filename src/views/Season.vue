@@ -31,6 +31,7 @@ import SeasonCard from '../components/SeasonCard.vue'
 import Player from 'xgplayer/dist/simple_player'
 import volume from 'xgplayer/dist/controls/volume'
 import playbackRate from 'xgplayer/dist/controls/playbackRate'
+import keyboard from 'xgplayer/dist/controls/keyboard'
 import mdui from 'mdui'
 const $ = mdui.$
 export default {
@@ -48,7 +49,8 @@ export default {
       autoplay: true,
       controlPlugins: [
         volume,
-        playbackRate
+        playbackRate,
+        keyboard
       ],
       playbackRate: [0.5, 0.75, 1, 1.33, 2, 4],
       fluid: true,

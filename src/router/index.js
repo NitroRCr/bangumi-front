@@ -24,6 +24,10 @@ const routes = [
     path: '/bangumi/:seasonId/:epNum',
     name: 'Season',
     component: Season
+  },
+  {
+    path: '*',
+    redirect: '/'
   }
 ]
 
