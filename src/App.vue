@@ -27,7 +27,7 @@ export default {
   }),
   computed: {
   },
-  mounted () {
+  beforeMount () {
     $.ajax({
       url: this.config.seasonsAPI,
       dataType: 'json',
