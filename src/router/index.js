@@ -21,7 +21,7 @@ const routes = [
     component: About
   },
   {
-    path: '/bangumi/:seasonId/:epNum',
+    path: '/bangumi/:seasonId',
     name: 'Season',
     component: Season
   },

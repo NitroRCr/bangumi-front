@@ -71,14 +71,16 @@ export default {
   methods: {
     loadSeason () {
       const params = this.$route.params
+      const query = this.$route.query
       if (this.focused) {
-        const sameEp = this.focused.episode.num === params.epNum
+        const sameEp = this.focused.episode.num === query.epNum
         const sameSs = this.focused.season.id === params.seasonId
         if (sameEp && sameSs) return
         if (sameSs) {
           const season = this.focused.season
-          const episode = season.episodes[params.epNum]
-          episode.num = params.epNum
+          const epNum = query.epNum || Object.keys(season.episodes)[0]
+          const episode = season.episodes[epNum]
+          episode.num = epNum
           const playName = season.name + ': ' + episode.title
           this.focused = {
             season,
@@ -94,8 +96,9 @@ export default {
         dataType: 'json',
         timeout: 10000,
         success: (season) => {
-          const episode = season.episodes[params.epNum]
-          episode.num = params.epNum
+          const epNum = query.epNum || Object.keys(season.episodes)[0]
+          const episode = season.episodes[epNum]
+          episode.num = epNum
           const playName = season.name + ': ' + episode.title
           this.focused = {
             season,
@@ -127,8 +130,8 @@ export default {
         if (url.indexOf('.mp4') !== -1) {
           return url
         }
-        return null
       }
+      return null
     }
   }
 }

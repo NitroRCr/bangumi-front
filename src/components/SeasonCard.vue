@@ -14,7 +14,7 @@
       <router-link
         v-for="(episode, num) in season.episodes"
         :key="num"
-        :to="num"
+        :to="'?epNum=' + num"
         class="mdui-btn mdui-btn-raised mdui-ripple"
         :class="{ 'mdui-color-theme-accent': num === focusedEpisode }"
       >

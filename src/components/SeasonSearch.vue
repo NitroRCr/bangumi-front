@@ -3,7 +3,7 @@
     <div class="links" v-for="season of matchedSeasons" :key="season.id">
       <router-link
         class="season-link mdui-col-xs-4 mdui-col-sm-3 mdui-col-md-2"
-        :to="`/bangumi/${season.id}/${season.episodes.keys()[0]}`"
+        :to="`/bangumi/${season.id}`"
       >
         <div class="cover">
           <img class="cover" :src="season.cover" />
@@ -21,7 +21,7 @@ export default {
     matchedSeasons () {
       const list = []
       for (const season of this.seasons) {
-        if (season.name.indexOf(this.searchText) !== -1) {
+        if (season.name.toLowerCase().indexOf(this.searchText.toLowerCase()) !== -1) {
           list.push(season)
         }
       }
