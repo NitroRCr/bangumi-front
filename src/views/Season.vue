@@ -13,6 +13,7 @@
           landscape: config.isLandscape,
           'mdui-shadow-4': config.isLandscape,
         }"
+        class="shadow-container"
       >
         <div id="main-player"></div>
         <season-card
@@ -137,4 +138,7 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
+.shadow-container.landscape {
+  background-color: #fff;
+}
 </style>

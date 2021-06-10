@@ -1,5 +1,6 @@
 <template>
   <div id="app">
+    <page-background ref="pageBackground"></page-background>
     <div class="mdui-toolbar mdui-color-theme mdui-shadow-4">
       <router-link class="mdui-typo-headline" to="/">{{
         config.siteTitle
@@ -14,6 +15,7 @@
 </template>
 
 <script>
+import PageBackground from './components/PageBackground.vue'
 import mdui from 'mdui'
 const $ = mdui.$
 export default {
@@ -25,6 +27,9 @@ export default {
       isLandscape: null
     }
   }),
+  components: {
+    PageBackground
+  },
   computed: {
   },
   beforeMount () {
@@ -41,8 +46,17 @@ export default {
     })
     setInterval(() => {
       const isLandscape = innerHeight < innerWidth
+      if (isLandscape !== this.config.isLandscape) {
+        this.$refs.pageBackground.setImage(isLandscape)
+      }
       this.config.isLandscape = isLandscape
     }, 500)
   }
 }
 </script>
+<style lang="scss">
+#app {
+  background-color: rgba(255, 255, 255, .85);
+  min-height: 100vh;
+}
+</style>
