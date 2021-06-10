@@ -117,6 +117,10 @@ export default {
       } else {
         this.player.src = url
       }
+      const time = this.$route.query.t || this.$route.query.time
+      if (time) {
+        this.player.currentTime = time
+      }
     },
     getUrl (videos) {
       for (const url of videos) {

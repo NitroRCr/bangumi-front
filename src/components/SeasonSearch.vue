@@ -3,7 +3,7 @@
     <div class="links" v-for="season of matchedSeasons" :key="season.id">
       <router-link
         class="season-link mdui-col-xs-4 mdui-col-sm-3 mdui-col-md-2"
-        :to="`/bangumi/${season.id}/1`"
+        :to="`/bangumi/${season.id}/${season.episodes.keys()[0]}`"
       >
         <div class="cover">
           <img class="cover" :src="season.cover" />
