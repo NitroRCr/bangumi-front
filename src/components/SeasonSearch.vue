@@ -50,9 +50,13 @@ export default {
       display: block;
       color: rgba(0, 0, 0, 0.87);
       width: 100%;
-      height: 2.5em;
+      height: 2.4em;
       overflow: hidden;
       margin-top: 5px;
+      text-overflow: ellipsis;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
     }
   }
 }

@@ -20,6 +20,7 @@
           v-if="focused"
           :focusedEpisode="focused.episode.num"
           :season="focused.season"
+          :isLandscape="config.isLandscape"
         ></season-card>
       </div>
       <page-footer></page-footer>

@@ -15,8 +15,8 @@
         v-for="(episode, num) in season.episodes"
         :key="num"
         :to="'?epNum=' + num"
-        class="mdui-btn mdui-btn-raised mdui-ripple mdui-color-white"
-        :class="{ 'mdui-color-theme-accent': num === focusedEpisode }"
+        class="mdui-btn mdui-btn-raised mdui-ripple"
+        :class="{ 'mdui-color-theme-accent': num === focusedEpisode, 'mdui-color-white': !isLandscape }"
       >
         {{ episode.title }}</router-link
       >
@@ -26,7 +26,7 @@
 <script>
 export default {
   name: 'SeasonCard',
-  props: ['season', 'focusedEpisode']
+  props: ['season', 'focusedEpisode', 'isLandscape']
 }
 </script>
 <style lang="scss" scoped>
