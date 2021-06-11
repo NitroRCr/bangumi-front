@@ -1,20 +1,25 @@
 <template>
-  <footer>
-    <div>NitroFire © 2021.</div>
-  </footer>
+  <div id="page-footer">
+    <div class="space-holder"></div>
+    <footer>
+      <div>NitroFire © 2021.</div>
+    </footer>
+  </div>
 </template>
 <script>
 export default {
   name: 'PageFooter'
 }
 </script>
-<style lang="scss">
+<style lang="scss" scoped>
+.space-holder {
+  height: 75px;
+}
 footer {
-  height: 3em;
-  width: 100%;
+  position: absolute;
+  bottom: 30px;
 
   > div {
-    margin-top: 2em;
     margin-left: 10px;
     color: #555;
     font-weight: bold;

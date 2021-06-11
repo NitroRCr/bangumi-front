@@ -58,5 +58,6 @@ export default {
 #app {
   background-color: rgba(255, 255, 255, .85);
   min-height: 100vh;
+  position: relative;
 }
 </style>

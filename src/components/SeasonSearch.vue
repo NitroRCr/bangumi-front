@@ -5,7 +5,7 @@
         class="season-link mdui-col-xs-4 mdui-col-sm-3 mdui-col-md-2"
         :to="`/bangumi/${season.id}`"
       >
-        <div class="cover">
+        <div class="cover mdui-shadow-2">
           <img class="cover" :src="season.cover" />
         </div>
         <span class="season-title">{{ season.name }}</span>
@@ -40,6 +40,7 @@ export default {
       height: 0;
       padding-bottom: 138%;
       overflow: hidden;
+      background-color: #fff;
       img {
         width: 100%;
         height: auto;
