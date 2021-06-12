@@ -23,10 +23,5 @@ workbox.core.clientsClaim() // Service Worker 被激活后使其立即获得页�
  * See https://goo.gl/S9QRab
  */
 const list = self.__precacheManifest
-for (const i of list) {
-  if (i.url === '/_redirects') {
-    list.pop(i)
-    break
-  }
-}
+list.shift()
 workbox.precaching.precacheAndRoute(list)
