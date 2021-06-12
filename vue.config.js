@@ -12,12 +12,14 @@ module.exports = {
       appleTouchIcon: './favicon.png',
       maskIcon: './favicon.png',
       msTileImage: './favicon.png'
+    },
+    workboxPluginMode: 'InjectManifest',
+    workboxOptions: {
+      // swSrc is required in InjectManifest mode.
+      swSrc: 'src/service-worker.js',
+      importWorkboxFrom: 'disabled',
+      importScripts: 'https://cdn.jsdelivr.net/npm/workbox-sw@6.1.5/build/workbox-sw.min.js'
+      // ...other Workbox options...
     }
-    /*
-* 两个模式，GenerateSW（默认）和 InjectManifest
-* GenerateSW 在我们build项目时候，每次都会新建一个service worker文件
-* InjectManifest 可以让我们编辑一个自定义的service worker文件，实现更多的功能，并且可以
-* 拿到预缓存列表
-*/
   }
 }
