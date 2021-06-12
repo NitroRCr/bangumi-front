@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 /**
  * Welcome to your Workbox-powered service worker!
  *
@@ -11,14 +12,16 @@
  * See https://goo.gl/2aRDsh
  */
 
-workbox.core.setCacheNameDetails({prefix: "anime-back"});
+workbox.core.setCacheNameDetails({ prefix: 'anime-back' })
 
-workbox.core.skipWaiting(); // 强制等待中的 Service Worker 被激活
-workbox.core.clientsClaim(); // Service Worker 被激活后使其立即获得页面控制权
+workbox.core.skipWaiting() // 强制等待中的 Service Worker 被激活
+workbox.core.clientsClaim() // Service Worker 被激活后使其立即获得页面控制权
 
 /**
  * The workboxSW.precacheAndRoute() method efficiently caches and responds to
  * requests for URLs in the manifest.
  * See https://goo.gl/S9QRab
  */
-workbox.precaching.precacheAndRoute([]);
+const list = self.__precacheManifest
+list.pop(0)
+workbox.precaching.precacheAndRoute(list)
