@@ -50,7 +50,7 @@ export default {
       display: block;
       color: rgba(0, 0, 0, 0.87);
       width: 100%;
-      height: 2.4em;
+      height: 2.3em;
       overflow: hidden;
       margin-top: 5px;
       text-overflow: ellipsis;

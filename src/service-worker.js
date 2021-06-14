@@ -22,6 +22,4 @@ workbox.core.clientsClaim() // Service Worker 被激活后使其立即获得页�
  * requests for URLs in the manifest.
  * See https://goo.gl/S9QRab
  */
-const list = self.__precacheManifest
-list.shift()
-workbox.precaching.precacheAndRoute(list)
+workbox.precaching.precacheAndRoute([])
