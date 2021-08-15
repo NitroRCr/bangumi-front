@@ -24,7 +24,7 @@ export default {
       seasonsAPI: '/seasons.json',
       seasons: null,
       siteTitle: 'AnimePure',
-      isLandscape: null
+      isLandscape: innerHeight < innerWidth
     }
   }),
   components: {
@@ -47,7 +47,7 @@ export default {
     setInterval(() => {
       const isLandscape = innerHeight < innerWidth
       if (isLandscape !== this.config.isLandscape) {
-        this.$refs.pageBackground.setImage(isLandscape)
+        this.$refs.pageBackground.setImage()
       }
       this.config.isLandscape = isLandscape
     }, 500)

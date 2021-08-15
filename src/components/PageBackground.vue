@@ -5,43 +5,37 @@
 <script>
 export default {
   name: 'PageBackground',
-  data: () => ({
-    image: innerWidth > innerHeight
-      ? '/img/portrait-black.png'
-      : '/img/landscape-black.png',
-    imageGroup: {
-      landscape: [
-        'img/landscape/1.jpg',
-        'img/landscape/2.jpg',
-        'img/landscape/3.jpg',
-        'img/landscape/4.jpg',
-        'img/landscape/5.jpg',
-        'img/landscape/6.jpg',
-        'img/landscape/7.jpg',
-        'img/landscape/8.jpg'
-      ],
-      portrait: [
-        'img/portrait/1.jpg',
-        'img/portrait/2.jpg',
-        'img/portrait/3.jpg',
-        'img/portrait/4.jpg',
-        'img/portrait/5.jpg',
-        'img/portrait/6.jpg'
-      ]
+  data () {
+    return {
+      image: innerWidth > innerHeight
+        ? '/img/portrait-black.png'
+        : '/img/landscape-black.png'
     }
-  }),
+  },
   methods: {
-    setImage (isLandscape) {
-      const imagePath = isLandscape
-        ? this.randint(this.imageGroup.landscape)
-        : this.randint(this.imageGroup.portrait)
+    setImage () {
       const image = new Image()
+      const url = this.getImage()
       image.onload = () => {
-        this.image = imagePath
+        this.image = url
       }
-      image.src = imagePath
+      image.src = url
     },
-    randint: (obj) => obj[Object.keys(obj)[Math.floor(Math.random() * Object.keys(obj).length)]]
+    getImage () {
+      const direction = innerHeight > innerWidth ? 'portrait' : 'landscape'
+      const webpSupported = (function () {
+        try {
+          return document.createElement('canvas').toDataURL('image/webp', 0.5).indexOf('data:image/webp') === 0
+        } catch (err) {
+          return false
+        }
+      })()
+      const webp = webpSupported ? 'true' : 'false'
+      return `https://api.krytro.com:1443/setu/?direction=${direction}&webp=${webp}`
+    }
+  },
+  mounted () {
+    this.setImage()
   }
 }
 </script>

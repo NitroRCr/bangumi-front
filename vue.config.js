@@ -1,4 +1,5 @@
 module.exports = {
+  productionSourceMap: false,
   pwa: {
     // 一些基础配置
     name: 'AnimePure',
