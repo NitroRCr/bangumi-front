@@ -6,11 +6,11 @@
         config.siteTitle
       }}</router-link>
       <div class="mdui-toolbar-spacer"></div>
-      <!-- <router-link to="/about" class="mdui-btn mdui-btn-icon"
-        ><i class="mdui-icon material-icons">info_outline</i></router-link
-      > -->
+      <a href="javascript:;" @click="showAbout = !showAbout" class="mdui-btn mdui-btn-icon"
+        ><i class="mdui-icon material-icons">{{ showAbout ? 'info' : 'info_outline' }}</i></a
+      >
     </div>
-    <router-view :config="config" />
+    <router-view :config="config" :showAbout="showAbout" />
   </div>
 </template>
 
@@ -25,7 +25,8 @@ export default {
       seasons: null,
       siteTitle: 'AnimePure',
       isLandscape: innerHeight < innerWidth
-    }
+    },
+    showAbout: false
   }),
   components: {
     PageBackground

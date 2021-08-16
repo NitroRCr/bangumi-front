@@ -1,6 +1,9 @@
 # bangumi-front
 
+A simple single page application that can play bangumi.
+
 ## Project setup
+
 ```
 npm install
 ```
