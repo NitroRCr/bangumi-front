@@ -9,7 +9,14 @@ export default {
     return {
       image: innerWidth > innerHeight
         ? '/img/portrait-black.png'
-        : '/img/landscape-black.png'
+        : '/img/landscape-black.png',
+      webpSupported: (function () {
+        try {
+          return document.createElement('canvas').toDataURL('image/webp', 0.5).indexOf('data:image/webp') === 0
+        } catch (err) {
+          return false
+        }
+      })()
     }
   },
   methods: {
@@ -23,19 +30,21 @@ export default {
     },
     getImage () {
       const direction = innerHeight > innerWidth ? 'portrait' : 'landscape'
-      const webpSupported = (function () {
-        try {
-          return document.createElement('canvas').toDataURL('image/webp', 0.5).indexOf('data:image/webp') === 0
-        } catch (err) {
-          return false
-        }
-      })()
-      const webp = webpSupported ? 'true' : 'false'
+      const webp = this.webpSupported ? 'true' : 'false'
       return `https://api.krytro.com:1443/setu/?direction=${direction}&webp=${webp}`
     }
   },
   mounted () {
-    this.setImage()
+    this.setImage();
+    (function () {
+      var img = new Image()
+      function getResult (event) {
+        this.webpSupported = event && event.type === 'load' ? img.width === 1 : false
+      }
+      img.onerror = getResult
+      img.onload = getResult
+      img.src = 'data:image/webp;base64,UklGRiQAAABXRUJQVlA4IBgAAAAwAQCdASoBAAEAAwA0JaQAA3AA/vuUAAA=' // 一像素图片
+    })()
   }
 }
 </script>
