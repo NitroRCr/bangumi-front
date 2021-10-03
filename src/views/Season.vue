@@ -57,6 +57,7 @@ export default {
       playbackRate: [0.5, 0.75, 1, 1.33, 2, 4],
       fluid: true,
       videoInit: true,
+      rotateFullscreen: true,
       keyShortcut: 'on'
     },
     focused: null
