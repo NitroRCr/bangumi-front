@@ -42,6 +42,7 @@
 // @ is an alias to /src
 import SeasonSearch from '../components/SeasonSearch.vue'
 import PageFooter from '../components/PageFooter.vue'
+import mdui from 'mdui'
 
 export default {
   name: 'Home',
@@ -54,6 +55,9 @@ export default {
     return {
       searchText: null
     }
+  },
+  mounted () {
+    mdui.mutation()
   }
 }
 </script>
