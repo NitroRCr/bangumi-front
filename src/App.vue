@@ -6,8 +6,13 @@
         config.siteTitle
       }}</router-link>
       <div class="mdui-toolbar-spacer"></div>
-      <a href="javascript:;" @click="showAbout = !showAbout" class="mdui-btn mdui-btn-icon"
-        ><i class="mdui-icon material-icons">{{ showAbout ? 'info' : 'info_outline' }}</i></a
+      <a
+        href="javascript:;"
+        @click="showAbout = !showAbout"
+        class="mdui-btn mdui-btn-icon"
+        ><i class="mdui-icon material-icons">{{
+          showAbout ? "info" : "info_outline"
+        }}</i></a
       >
     </div>
     <router-view :config="config" :showAbout="showAbout" />
@@ -24,15 +29,17 @@ export default {
       seasonsAPI: '/seasons.json',
       seasons: null,
       siteTitle: 'AnimePure',
-      isLandscape: innerHeight < innerWidth
+      isLandscape: innerHeight < innerWidth,
+      isMobile: !!navigator.userAgent.match(
+        /(phone|pad|pod|iPhone|iPod|ios|iPad|Android|Mobile|BlackBerry|IEMobile|MQQBrowser|JUC|Fennec|wOSBrowser|BrowserNG|WebOS|Symbian|Windows Phone)/i
+      )
     },
     showAbout: false
   }),
   components: {
     PageBackground
   },
-  computed: {
-  },
+  computed: {},
   beforeMount () {
     $.ajax({
       url: this.config.seasonsAPI,
@@ -57,7 +64,7 @@ export default {
 </script>
 <style lang="scss">
 #app {
-  background-color: rgba(255, 255, 255, .85);
+  background-color: rgba(255, 255, 255, 0.85);
   min-height: 100vh;
   position: relative;
 }

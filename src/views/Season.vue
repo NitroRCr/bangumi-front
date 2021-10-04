@@ -43,25 +43,27 @@ export default {
     SeasonCard,
     PageFooter
   },
-  data: () => ({
-    player: null,
-    playerConfig: {
-      id: 'main-player',
-      url: null,
-      autoplay: true,
-      controlPlugins: [
-        volume,
-        playbackRate,
-        keyboard
-      ],
-      playbackRate: [0.5, 0.75, 1, 1.33, 2, 4],
-      fluid: true,
-      videoInit: true,
-      rotateFullscreen: true,
-      keyShortcut: 'on'
-    },
-    focused: null
-  }),
+  data: function () {
+    return {
+      player: null,
+      playerConfig: {
+        id: 'main-player',
+        url: null,
+        autoplay: true,
+        controlPlugins: [
+          volume,
+          playbackRate,
+          keyboard
+        ],
+        playbackRate: [0.5, 0.75, 1, 1.33, 2, 4],
+        fluid: true,
+        videoInit: true,
+        keyShortcut: 'on',
+        rotateFullscreen: this.config.isMobile
+      },
+      focused: null
+    }
+  },
   mounted () {
     this.loadSeason()
   },
@@ -142,5 +144,10 @@ export default {
 <style lang="scss" scoped>
 .shadow-container.landscape {
   background-color: #fff;
+}
+#main-player.xgplayer-rotate-fullscreen {
+  z-index: 3;
+  max-width: unset !important;
+  padding-top: 0 !important;
 }
 </style>
